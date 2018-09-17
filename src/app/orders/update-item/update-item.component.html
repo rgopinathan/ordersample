@@ -1,0 +1,75 @@
+<form [formGroup]="updateItemForm" (ngSubmit)="updateItem()">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group" >
+        <label for="grade">Grade</label>
+        <input type="text" class="form-control" formControlName="grade">
+        <app-field-error-display [displayError]="isFieldValid('grade')" 
+            errorMsg="Grade is required"></app-field-error-display>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="sellingQuantity">Selling Quantity</label>
+        <input type="number" class="form-control" formControlName="sellingQuantity">
+        <app-field-error-display [displayError]="isFieldValid('sellingQuantity')" 
+          errorMsg="Selling Quantity is required"></app-field-error-display>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="sellingPrice">Selling Price</label>
+        <input type="number" class="form-control" formControlName="sellingPrice">
+        <app-field-error-display [displayError]="isFieldValid('sellPrice')" 
+          errorMsg="Selling Price is required"></app-field-error-display>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="buyingCartons">Selling Cartons</label>
+        <input type="number" class="form-control" formControlName="buyingCartons">
+        <app-field-error-display [displayError]="isFieldValid('buyingCartons')" 
+          errorMsg="Selling Cartons is required"></app-field-error-display>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="buyingQuantity">Buying Quantity</label>
+        <input type="number" class="form-control" formControlName="buyingQuantity">
+        <app-field-error-display [displayError]="isFieldValid('buyingQuantity')" 
+          errorMsg="Buying Quantity is required"></app-field-error-display>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="buyingPrice">Buying Price</label>
+        <input type="number" class="form-control" formControlName="buyingPrice">
+        <app-field-error-display [displayError]="isFieldValid('sellPrice')" 
+          errorMsg="Buying Price is required"></app-field-error-display>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="form-group">
+        <label for="buyingCartons">Buying Cartons</label>
+        <input type="number" class="form-control" formControlName="buyingCartons">
+        <app-field-error-display [displayError]="isFieldValid('buyingCartons')" 
+          errorMsg="Buying Cartons is required"></app-field-error-display>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      Total Selling Price: {{ totalSellingPrice | currency }}
+    </div>
+    <div class="col-md-4">
+      Total Buying Price: {{ totalBuyingPrice | currency }}
+    </div>
+    <div class="col-md-4">
+      Net Profit: {{ netProfit | currency }}
+    </div>
+  </div>
+</form>
