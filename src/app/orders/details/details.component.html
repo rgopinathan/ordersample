@@ -1,79 +1,96 @@
-<div class="row">
-  <div class="col-md-12">
-    <form [formGroup]="DetailForm" (ngSubmit)="saveOrder()">
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">Order Details</div>
+    <div class="panel-body">
       <div class="row">
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="RssNumber">RSS Number</label>
-            <input type="text" class="form-control" formControlName="RSSNumber">
-            <app-field-error-display [displayError]="isFieldValid('RSSNumber')" 
-                errorMsg="RSS Number is required"></app-field-error-display>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="form-group">
-            <label for="OrderNumber">Order Number</label>
-            <input type="text" class="form-control" formControlName="OrderNumber">
-            <app-field-error-display [displayError]="isFieldValid('OrderNumber')" 
-            errorMsg="Order Number is required"></app-field-error-display>
-          </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-              <label for="Type">Type</label>
-              <input type="text" class="form-control" formControlName="Type">
-              <app-field-error-display [displayError]="isFieldValid('Type')" 
-              errorMsg="Type is required"></app-field-error-display>
+        <div class="col-md-12">
+          <form [formGroup]="DetailForm" (ngSubmit)="saveOrder()">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="RssNumber">RSS Number</label>
+                  <input type="text" class="form-control" formControlName="RSSNumber">
+                  <app-field-error-display [displayError]="isFieldValid('RSSNumber')" 
+                      errorMsg="RSS Number is required"></app-field-error-display>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="form-group">
+                  <label for="OrderNumber">Order Number</label>
+                  <input type="text" class="form-control" formControlName="OrderNumber">
+                  <app-field-error-display [displayError]="isFieldValid('OrderNumber')" 
+                  errorMsg="Order Number is required"></app-field-error-display>
+                </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="Type">Type</label>
+                    <input type="text" class="form-control" formControlName="Type">
+                    <app-field-error-display [displayError]="isFieldValid('Type')" 
+                    errorMsg="Type is required"></app-field-error-display>
+                  </div>
+              </div>
             </div>
+            <div class="row">
+              <div class="col-md-8">
+                  <div class="form-group">
+                    <label for="Packer">Packer</label>
+                    <input type="text" class="form-control" formControlName="Packer">
+                    <app-field-error-display [displayError]="isFieldValid('Packer')" 
+                    errorMsg="Packer is required"></app-field-error-display>
+                  </div>
+              </div>
+              <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="PackDate">Pack Date</label>
+                    <input type="date" class="form-control" formControlName="PackDate">
+                  </div>
+              </div>
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                  <div class="form-group">
+                  <label for="Buyer">Buyer</label>
+                  <input type="text" class="form-control" formControlName="Buyer">
+                  <app-field-error-display [displayError]="isFieldValid('Buyer')" 
+                  errorMsg="Buyer is required"></app-field-error-display>
+                  </div>           
+                </div>
+                <div class="col-md-4">
+                  <div class="form-group">
+                    <label for="DeliveryDate">Delivery Date</label>
+                    <input type="date" class="form-control" formControlName="DeliveryDate"> 
+                </div> 
+                
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <button type="submit" class="btn btn-primary" [disabled]="!DetailForm.Valid">Save Order</button>
+                  </div> 
+                </div>
+              </div>
+          </form>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-8">
-            <div class="form-group">
-              <label for="Packer">Packer</label>
-              <input type="text" class="form-control" formControlName="Packer">
-              <app-field-error-display [displayError]="isFieldValid('Packer')" 
-              errorMsg="Packer is required"></app-field-error-display>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="form-group">
-              <label for="PackDate">Pack Date</label>
-              <input type="date" class="form-control" formControlName="PackDate">
-            </div>
-        </div>
-      </div>
-      <div class="row">
-         <div class="col-md-8">
-           <div class="form-group">
-            <label for="Buyer">Buyer</label>
-            <input type="text" class="form-control" formControlName="Buyer">
-            <app-field-error-display [displayError]="isFieldValid('Buyer')" 
-            errorMsg="Buyer is required"></app-field-error-display>
-           </div>           
-         </div>
-         <div class="col-md-4">
-            <div class="form-group">
-              <label for="DeliveryDate">Delivery Date</label>
-              <input type="date" class="form-control" formControlName="DeliveryDate"> 
-          </div> 
-          
-         </div>
-       </div>
-       <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <button type="submit" class="btn btn-primary" [disabled]="!DetailForm.Valid">Save Order</button>
-              <button class="btn btn-success" (click)="addItem">Add New Item</button>
-          </div> 
-        </div>
-        </div>
-    </form>
+    </div>
   </div>
 </div>
 
-<div class="col-md-12">  
-  <app-update-item></app-update-item>
+<div class="col-md-12">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" href="#addItem">Add Item</a>
+      </h4>
+    </div>
+    <div class="panel-collapse collapse" id="addItem">
+      <div class="panel-body">
+          <app-update-item></app-update-item>
+      </div>
+    </div>    
+  </div> 
 </div>
 
 <div *ngIf="items.length > 0">Items</div>
