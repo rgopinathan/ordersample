@@ -1,3 +1,48 @@
-<div >
-  list works
+<div class="row">
+  <div class="col-md-12">  
+    <button class="btn btn-primary" routerLink="add">Add New Order</button>
+    <div class="panel panel-default">
+      <div class="panel-heading">Search</div>
+      <div class="panel-body">
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="searchOrder">Packer/Buyer</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="searchOrder">Order Number</label>
+            <input type="text" class="form-control">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <button class="btn btn-success">
+            Search
+          </button>
+        </div>
+      </div>
+    </div>
+    <table class="table table-responsive">
+      <tr>
+        <th>PO#</th>
+        <th>End Buyer</th>
+        <th>Delivery Date</th>
+        <th>PI#</th>
+        <th>Packer</th>
+        <th>Pack Date</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let order of orders">
+        <td>{{ order.OrderNumber }}</td>
+        <td>{{ order.Buyer }}</td>
+        <td>{{ order.DeliveryDate }}</td>
+        <td>{{ order.PINumber }}</td>
+        <td>{{ order.Packer }}</td>
+        <td>{{ order.PackDate }}</td>
+        <td>{{ order.Packer }}</td>
+
+      </tr>
+    </table>
+  </div>
 </div>

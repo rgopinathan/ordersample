@@ -11,6 +11,7 @@ import { HeaderComponent } from './header/header.component';
 import { FieldErrorDisplayComponent } from './field-error-display/field-error-display.component';
 import { DisplayValidationDirective } from './display-validation.directive';
 import { UpdateItemComponent } from './orders/update-item/update-item.component';
+import { ItemDetailsComponent } from './orders/item-details/item-details.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { UpdateItemComponent } from './orders/update-item/update-item.component'
     FieldErrorDisplayComponent,
     DisplayValidationDirective,
     UpdateItemComponent,
+    ItemDetailsComponent,
   ],
   imports: [
     BrowserModule,

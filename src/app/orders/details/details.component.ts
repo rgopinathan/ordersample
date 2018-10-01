@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
+import { order } from '../order';
+import { orderItem } from '../orderItem';
 
 @Component({
   selector: 'app-details',
@@ -8,6 +10,9 @@ import { ReactiveFormsModule, FormsModule, FormControl, FormGroup, Validators } 
 })
 export class DetailsComponent implements OnInit {
   DetailForm : FormGroup;
+
+  order: order;
+  orderItems: orderItem[];
 
   constructor() { }
 
@@ -29,6 +34,10 @@ export class DetailsComponent implements OnInit {
 
   isFieldValid(field: string) {
     return !this.DetailForm.get(field).valid && this.DetailForm.get(field).touched;
+  }
+
+  addItem(){
+
   }
   
 }

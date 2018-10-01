@@ -64,10 +64,20 @@
           <div class="col-md-12">
             <div class="form-group">
               <button type="submit" class="btn btn-primary" [disabled]="!DetailForm.Valid">Save Order</button>
-              <button (click)="Add Item" class="btn btn-success">Add Item</button>
+              <button class="btn btn-success" (click)="addItem">Add New Item</button>
           </div> 
         </div>
         </div>
     </form>
   </div>
+</div>
+
+<div class="col-md-12">  
+  <app-update-item></app-update-item>
+</div>
+
+<div *ngIf="items.length > 0">Items</div>
+
+<div class="col-md-12">
+  <app-item-details [items]="orderItems"></app-item-details>
 </div>
