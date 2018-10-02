@@ -21,7 +21,7 @@
       <div class="form-group">
         <label for="sellingPrice">Selling Price</label>
         <input type="number" class="form-control" formControlName="sellingPrice">
-        <app-field-error-display [displayError]="isFieldValid('sellPrice')" 
+        <app-field-error-display [displayError]="isFieldValid('sellingPrice')" 
           errorMsg="Selling Price is required"></app-field-error-display>
       </div>
     </div>
@@ -39,7 +39,7 @@
       <div class="form-group">
         <label for="buyingPrice">Buying Price</label>
         <input type="number" class="form-control" formControlName="buyingPrice">
-        <app-field-error-display [displayError]="isFieldValid('sellPrice')" 
+        <app-field-error-display [displayError]="isFieldValid('buyingPrice')" 
           errorMsg="Buying Price is required"></app-field-error-display>
       </div>
     </div>
@@ -47,7 +47,7 @@
         <div class="form-group">
           <label for="sellingCartons">Sell Cartons</label>
           <input type="number" class="form-control" formControlName="sellingCartons">
-          <app-field-error-display [displayError]="isFieldValid('buyingCartons')" 
+          <app-field-error-display [displayError]="isFieldValid('sellingCartons')" 
             errorMsg="Selling Cartons is required"></app-field-error-display>
         </div>
       </div>
