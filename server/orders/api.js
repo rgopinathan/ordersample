@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-const order = require('./ordersSchema');
+var order = require('./ordersSchema');
 
 router.get('/', (req, res, next) => {
     order.find((err, orders) => {

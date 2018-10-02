@@ -1,12 +1,12 @@
-const express = require('express');
-const router = express.Router();
 
-router.get('/orders',(req,res,next)=>{
-    res.send('order list');
-});
+var express = require('express');
 
-router.get('/order/:id',(req,res,next)=>{
-    res.send('order item');
-});
+var app = express();
 
-module.exports = router;
+var orders = require('./orders/api');
+
+
+app.use('/orders', orders); 
+
+
+module.exports = app;
