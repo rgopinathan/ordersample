@@ -2,10 +2,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const orderItemSchema = mongoose.Schema({
-    id :{
-        type: String,
-        required: true   
-      },
+
     grade:{
         type: String,
         required: true  
@@ -30,9 +27,13 @@ const orderItemSchema = mongoose.Schema({
         type: Number,
         required: true  
     },
-      buyingPrice:{
+    buyingCartons:{
         type: Number,
         required: true  
+    },
+    order:{
+        type: Schema.Types.ObjectId, ref: "order",
+        
     }
 
 });

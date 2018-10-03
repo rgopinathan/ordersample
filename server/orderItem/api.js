@@ -4,7 +4,7 @@ var router = express.Router();
 var orderItem = require('./orderItemSchema');
 
 router.get('/', (req, res, next) => {
-    orderItem.find((err, orderItems) => {
+    orderItem.populate('order').find((err, orderItems) => {
         if (err) {
             return res.json(err)
         }
@@ -20,7 +20,8 @@ router.get('/', (req, res, next) => {
                 "sellingCartons": orderItem.sellingCartons,
                 "buyingPrice":orderItem.buyingPrice,
                 "buyingQuantity":orderItem.buyingQuantity,
-                "buyingCartons": orderItem.buyingCartons
+                "buyingCartons": orderItem.buyingCartons,
+                "order":orderItem.order
                 })
             })
             return res.status(200).json(returnResult);   
@@ -30,13 +31,15 @@ router.get('/', (req, res, next) => {
 
 router.post('/', (req, res, next) => {
     let neworderItem = new orderItem({
+        
         grade: req.body.grade,
         sellingPrice: req.body.sellingPrice,
         sellingQuantity: req.body.sellingQuantity,
         sellingCartons: req.body.sellingCartons,
         buyingPrice: req.body.buyingPrice,
         buyingQuantity: req.body.buyingQuantity,
-        buyingCartons: req.body.buyingCartons
+        buyingCartons: req.body.buyingCartons,
+        order:req.body.order
     });
     neworderItem.save((err, result) => {
         if (err) {
