@@ -31,9 +31,8 @@ const orderItemSchema = mongoose.Schema({
         type: Number,
         required: true  
     },
-    order:{
-        type: Schema.Types.ObjectId, ref: "order",
-        
+    orderId:{
+        type: Schema.Types.ObjectId, ref: "order",        
     }
 
 });

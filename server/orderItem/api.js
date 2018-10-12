@@ -21,7 +21,7 @@ router.get('/', (req, res, next) => {
                 "buyingPrice":orderItem.buyingPrice,
                 "buyingQuantity":orderItem.buyingQuantity,
                 "buyingCartons": orderItem.buyingCartons,
-                "order":orderItem.order
+                "order":orderItem.order.id
                 })
             })
             return res.status(200).json(returnResult);   

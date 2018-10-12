@@ -1,5 +1,6 @@
 export class order {
     id: string;
+    RSSNumber: string
     OrderNumber: string;
     PINumber: string;
     Type: string;
@@ -9,8 +10,9 @@ export class order {
     DeliveryDate: Date;
     Status: string;
 
-    public constructor(id: string, OrderNumber: string, PINumber: string, Type: string, Packer: string,Buyer: string,PackDate: Date,DeliveryDate: Date, Status: string)   {
+    public constructor(id: string, RSSNumber:string,OrderNumber: string, PINumber: string, Type: string, Packer: string,Buyer: string,PackDate: Date,DeliveryDate: Date, Status: string)   {
         this.id=id;
+        this.RSSNumber=RSSNumber;
         this.OrderNumber=OrderNumber;
         this.PINumber = PINumber;
         this.Type=Type;

@@ -2,17 +2,17 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 const ordersSchema = mongoose.Schema({
-    id :{
+    RSSNumber:{
         type: String,
-        required: true   
-      },
+       
+    },
     OrderNumber:{
         type: String,
-        required: true  
+        
     },
     PINumber:{
-        type: String,
-        required: true  
+        type: String
+          
     },
     Type:{
         type: String,
@@ -20,23 +20,23 @@ const ordersSchema = mongoose.Schema({
     },
     Packer:{
         type: String,
-        required: true  
+         
     },    
     Buyer:{
         type: String,
-        required: true  
+          
     },
     PackDate:{
-        type: Date,
-        required: true  
+        type: Date
+        
     },
     DeliveryDate:{
-        type: Date,
-        required: true  
+        type: Date
+        
     },
     Status:{
-        type: String,
-        required: true  
+        type: String
+        
     }
 });
 

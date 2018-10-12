@@ -25,6 +25,7 @@
     </div>
     <table class="table table-responsive">
       <tr>
+        <th>RSSNumber</th>
         <th>PO#</th>
         <th>End Buyer</th>
         <th>Delivery Date</th>
@@ -32,8 +33,10 @@
         <th>Packer</th>
         <th>Pack Date</th>
         <th>Status</th>
+        
       </tr>
-      <tr *ngFor="let order of orders">
+      <tr *ngFor="let order of orders"  [routerLink]='["details",order.id]'(orderSelected)="onOrderSelected($event)">
+        <td>{{ order.RSSNumber }}</td>
         <td>{{ order.OrderNumber }}</td>
         <td>{{ order.Buyer }}</td>
         <td>{{ order.DeliveryDate }}</td>

@@ -14,6 +14,7 @@ router.get('/', (req, res, next) => {
             {
                returnResult.push({
                 "id": order._id,
+                "RSSNumber":order.RSSNumber,
                 "OrderNumber": order.OrderNumber,
                 "PINumber": order.PINumber,
                 "Type": order.Type,
@@ -29,8 +30,35 @@ router.get('/', (req, res, next) => {
     });
 });
 
+router.get('/:id', function(req, res)  {
+    console.log(req.params.id);
+    order.findById(req.params.id,function(err,result){
+        
+        if (err) {
+            res.json(err)
+        }
+        else {
+            var returnResult = {
+                "id" : result._id,
+                "RSSNumber":result.RSSNumber,
+                "OrderNumber": result.OrderNumber,
+                "PINumber": result.PINumber,
+                "Type": result.Type,
+                "Packer": result.Packer,
+                "Buyer":result.Buyer,
+                "PackDate":result.PackDate,
+                "DeliveryDate": result.DeliveryDate,
+                "Status": result.Status
+            };
+            return res.status(200).json(returnResult);   
+           
+        }
+    });
+});
+
 router.post('/', (req, res, next) => {
     let newOrder = new order({
+        RSSNumber:req.body.RSSNumber,
         OrderNumber: req.body.OrderNumber,
         PINumber: req.body.PINumber,
         Type: req.body.Type,
