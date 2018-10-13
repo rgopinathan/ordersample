@@ -1,7 +1,12 @@
 <div class="row">
-  <div class="col-md-12">  
-    <button class="btn btn-primary" routerLink="add">Add New Order</button>
-    <div class="panel panel-default">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-12">
+          <button class="btn btn-primary" routerLink="add">Add New Order</button>
+      </div>  
+    </div>    
+    
+    <div class="panel panel-default margin-top20">
       <div class="panel-heading">Search</div>
       <div class="panel-body">
         <div class="col-md-4">
@@ -23,7 +28,7 @@
         </div>
       </div>
     </div>
-    <table class="table table-responsive">
+    <table class="table table-striped table-responsive">
       <tr>
         <th>RSSNumber</th>
         <th>PO#</th>
@@ -39,10 +44,10 @@
         <td>{{ order.RSSNumber }}</td>
         <td>{{ order.OrderNumber }}</td>
         <td>{{ order.Buyer }}</td>
-        <td>{{ order.DeliveryDate }}</td>
+        <td>{{ order.DeliveryDate | date }}</td>
         <td>{{ order.PINumber }}</td>
         <td>{{ order.Packer }}</td>
-        <td>{{ order.PackDate }}</td>
+        <td>{{ order.PackDate | date }}</td>
         <td>{{ order.Packer }}</td>
 
       </tr>

@@ -18,24 +18,29 @@ export class DetailsComponent implements OnInit {
   orderItems: orderItem[];
   orderId: string;
   selectedOrder: order;
+  editEnabled: boolean = false;
   
   constructor(private service: OrderService,
               private router: Router,
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-         this.DetailForm = new FormGroup({
-        'RSSNumber': new FormControl(null,Validators.required),
-        'OrderNumber': new FormControl(null,Validators.required),
-        'Packer': new FormControl(null,Validators.required),
-        'Buyer': new FormControl(null,Validators.required),
-        'Type': new FormControl(null),
-        'PackDate': new FormControl(null),
-        'DeliveryDate': new FormControl(null)
+    this.DetailForm = new FormGroup({
+      'RSSNumber': new FormControl(null,Validators.required),
+      'OrderNumber': new FormControl(null,Validators.required),
+      'Packer': new FormControl(null,Validators.required),
+      'Buyer': new FormControl(null,Validators.required),
+      'Type': new FormControl(null),
+      'PackDate': new FormControl(null),
+      'DeliveryDate': new FormControl(null)    
     });
+
     this.orderId = this.route.snapshot.params['id'];
-    if(this.orderId != null){
+
+    if(this.orderId != null) {
       this.getOrder();
+    } else {
+      this.editEnabled = true;
     }
   }
   
@@ -49,8 +54,8 @@ export class DetailsComponent implements OnInit {
         Packer:order.Packer,
         Buyer:order.Buyer,
         Type:order.Type,
-        PackDate:order.PackDate,
-        DeliveryDate:order.DeliveryDate
+        PackDate: this.fromJsonDate(order.PackDate),
+        DeliveryDate: this.fromJsonDate(order.DeliveryDate)
       });
     });
   }
@@ -59,13 +64,12 @@ export class DetailsComponent implements OnInit {
     console.log(this.DetailForm.value);
     this.successMessage = '';
     this.service.addOrder(this.DetailForm.value).subscribe(
-      (result)=>
-        {
-          this.successMessage = 'Order added';
-          console.log(result);
-          this.orderId = result._id;
-          //this.router.navigate(['/orders']);
-        }
+      (result)=>  {
+        this.successMessage = 'Order added';
+        console.log(result);
+        this.orderId = result["_id"];
+        this.editEnabled = false;
+      }
     );
   }
   
@@ -76,6 +80,11 @@ export class DetailsComponent implements OnInit {
 
   addItem(){
 
+  }
+
+  fromJsonDate(jDate): string {
+    const bDate: Date = new Date(jDate);
+    return bDate.toISOString().substring(0, 10);  //Ignore time
   }
   
 }

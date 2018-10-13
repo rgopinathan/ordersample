@@ -1,9 +1,14 @@
 <div class="col-md-12">
   <div class="panel panel-default">
-    <div class="panel-heading">Order Details</div>
+    <div class="panel-heading">
+      Order Details
+      <span [hidden]="editEnabled">
+          <button class="btn btn-sm btn-primary pull-right" (click)="editEnabled = true">Edit Order</button>
+      </span>      
+    </div>
     <div class="panel-body">
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12" [hidden]="!editEnabled">
           <form [formGroup]="DetailForm" (ngSubmit)="saveOrder()">
             <div class="row">
               <div class="col-md-4">
@@ -73,6 +78,18 @@
                 </div>
               </div>
           </form>
+        </div>
+        <div [hidden]="editEnabled">
+          <div class="col-md-6"> <label for="">RSS Number:</label> {{order.RSSNumber}}</div>
+          <div class="col-md-6"> <label for="">Order #:</label> {{ order.OrderNumber}}</div>          
+          <div class="col-md-3"> <label for="">Type:</label> {{ order.Type}}</div>
+          <div class="col-md-3"> <label for="">Total Buying Price :</label> </div>
+          <div class="col-md-3"> <label for="">Total Selling Price :</label> </div>
+          <div class="col-md-3"> <label for="">Total Margin :</label></div>
+          <div class="col-md-3"> <label for="">Packer:</label> {{ order.Packer }}</div>
+          <div class="col-md-3"> <label for="">Pack Date:</label> {{ order.PackDate | date }}</div>
+          <div class="col-md-3"> <label for="">Buyer:</label> {{ order.Buyer }}</div>
+          <div class="col-md-3"> <label for="">DeliveryDate:</label> {{ order.DeliveryDate | date }}</div>          
         </div>
       </div>
     </div>

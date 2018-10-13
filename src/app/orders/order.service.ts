@@ -1,33 +1,37 @@
 import { Injectable } from '@angular/core';
-import { Http, Headers} from '@angular/http';
 import { order } from './order';
-import 'rxjs/add/operator/map';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 
 export class OrderService {
 
-    constructor(private http: Http) { }
+    constructor(private httpClient: HttpClient) { }
 
     getOrder(id: string){
-        return this.http.get('/api/orders/'+id).map(res=>res.json());
+        return this.httpClient.get<order>('/api/orders/'+id).pipe(
+            (order) => {
+                return order;
+            }
+        )
     }
 
     getOrders(){
-        return this.http.get('/api/orders').map(res => res.json());
+        return this.httpClient.get<order[]>('/api/orders')
+            .pipe((orders) => orders);
     }
 
     addOrder(order: order) {
         const body = JSON.stringify(order);
         console.log(body);
-        const headers = new Headers({'Content-Type':'application/json'});
-        return this.http.post('/api/orders',body,{headers:headers}).map(res=>res.json());
+        const headers = new HttpHeaders({'Content-Type':'application/json'});
+        return this.httpClient.post('/api/orders',body,{headers:headers});
     }
 
     addOrderItem(orderItem: order){
-    const body = JSON.stringify(order);
-    console.log(body);
-    const headers = new Headers({'Content-Type':'application/json'});
-    return this.http.post('/api/orders',body,{headers:headers}).map(res=>res.json());
+        const body = JSON.stringify(order);
+        console.log(body);
+        const headers = new HttpHeaders({'Content-Type':'application/json'});
+        return this.httpClient.post('/api/orders',body,{headers:headers});
     }
 }

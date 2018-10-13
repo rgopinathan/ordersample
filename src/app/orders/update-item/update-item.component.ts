@@ -25,7 +25,7 @@ export class UpdateItemComponent implements OnInit {
       'buyingPrice': new FormControl(null,Validators.required),
       'sellingCartons': new FormControl(null,Validators.required),
       'buyingCartons': new FormControl(null,Validators.required)
-  });
+    });
   }
 
   updateItem() {
@@ -33,11 +33,11 @@ export class UpdateItemComponent implements OnInit {
     var orderItem = this.updateItemForm.value;
     orderItem.orderId = this.orderId;
     // this.service.getOrderId(orderItem.orderId);
-    this.service.addOrderItem(orderItem)
-    .subscribe((orderItem) => 
-    {
-        this.orderItem = orderItem;
-    });
+    // this.service.addOrderItem(orderItem).subscribe(
+    //   (orderItem) =>  {
+    //     this.orderItem = orderItem;
+    //   }
+    // );
  }
   
   isFieldValid(field: string) {
