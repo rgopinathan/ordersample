@@ -14,5 +14,4 @@ export class ItemDetailsComponent implements OnInit {
 
   ngOnInit() {
   }
-
 }

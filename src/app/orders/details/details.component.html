@@ -83,9 +83,9 @@
           <div class="col-md-6"> <label for="">RSS Number:</label> {{order.RSSNumber}}</div>
           <div class="col-md-6"> <label for="">Order #:</label> {{ order.OrderNumber}}</div>          
           <div class="col-md-3"> <label for="">Type:</label> {{ order.Type}}</div>
-          <div class="col-md-3"> <label for="">Total Buying Price :</label> </div>
-          <div class="col-md-3"> <label for="">Total Selling Price :</label> </div>
-          <div class="col-md-3"> <label for="">Total Margin :</label></div>
+          <div class="col-md-3"> <label for="">Total Buying Price :</label>{{ orderSummary.totalBuyPrice | currency }} </div>
+          <div class="col-md-3"> <label for="">Total Selling Price :</label> {{ orderSummary.totalSellPrice | currency }} </div>
+          <div class="col-md-3"> <label for="">Total Margin :</label> {{ orderSummary.totalMargin | currency }}</div>
           <div class="col-md-3"> <label for="">Packer:</label> {{ order.Packer }}</div>
           <div class="col-md-3"> <label for="">Pack Date:</label> {{ order.PackDate | date }}</div>
           <div class="col-md-3"> <label for="">Buyer:</label> {{ order.Buyer }}</div>
@@ -105,13 +105,13 @@
     </div>
     <div class="panel-collapse collapse" id="addItem">
       <div class="panel-body">
-          <app-update-item [orderId]="orderId"></app-update-item>
+          <app-update-item [orderId]="orderId" (itemAdded)="getOrderItems()"></app-update-item>
       </div>
     </div>    
   </div> 
 </div>
 
-<div *ngIf="items && items.length > 0">Items</div>
+<div *ngIf="orderItems && orderItems.length > 0">Items</div>
 
 <div class="col-md-12">
   <app-item-details [items]="orderItems"></app-item-details>

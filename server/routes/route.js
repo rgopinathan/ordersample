@@ -8,7 +8,7 @@ var orderItem = require('../orderItem/api');
 
 
 app.use('/orders', orders); 
-app.use('/orderItem',orderItem)
+app.use('/orderItems',orderItem)
 
 
 module.exports = app;

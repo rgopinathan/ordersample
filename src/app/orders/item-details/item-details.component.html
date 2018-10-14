@@ -1,8 +1,6 @@
-<table class="table table-responsive">
+<table class="table table-striped table-responsive">
   <tr>
-    <th>
-      GRADE
-    </th>
+    <th>GRADE</th>
     <th>SELLING PRICE</th>
     <th>SELLING QTY</th>
     <th>SELLING CARTONS</th>
@@ -14,13 +12,11 @@
     <th>MARGIN/ITEM</th>
     <th>TOTAL MARGIN</th>
   </tr>
-  <tr class="row" *ngFor="let item of items">
-    <td>
-      GRADE
-    </td>
-    <td> {{ item.grade }}</td>
+  <tr *ngFor="let item of items">
+    <td>{{ item.grade }}</td>
     <td>{{ item.sellingPrice | currency }}</td>
     <td>{{ item.sellingQuantity }}</td>
+    <td>{{ item.sellingCartons }}</td>
     <td>{{ item.sellingPrice * item.sellingQuantity | currency }}</td>
     <td>{{ item.buyingPrice }}</td>
     <td>{{ item.buyingQuantity }}</td>

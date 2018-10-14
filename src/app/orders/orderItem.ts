@@ -1,14 +1,14 @@
 export class orderItem {
     id: string;
     grade: string;
-    sellingPrice: Number;
-    sellingQuantity: Number;
-    sellingCartons: Number;
-    buyingPrice: Number;
-    buyingQuantity: Number;
-    buyingCartons: Number;
+    sellingPrice: number;
+    sellingQuantity: number;
+    sellingCartons: number;
+    buyingPrice: number;
+    buyingQuantity: number;
+    buyingCartons: number;
 
-    public constructor(id: string, grade: string, sellingPrice: Number, sellingQuantity: Number, sellingCartons: Number, buyingPrice: Number, buyingQuantity: Number, buyingCartons: Number){
+    public constructor(id: string, grade: string, sellingPrice: number, sellingQuantity: number, sellingCartons: number, buyingPrice: number, buyingQuantity: number, buyingCartons: number){
         
     }
 }

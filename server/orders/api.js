@@ -73,7 +73,7 @@ router.post('/', (req, res, next) => {
             return res.status(500).json(err)
         }
         else {
-            return res.status(200).json(result);
+            return res.status(200).json(result._id);
         }
     });
 });

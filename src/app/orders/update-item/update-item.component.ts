@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ReactiveFormsModule, FormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { OrderService} from '../order.service';
 import { order } from '../order';
@@ -10,6 +10,7 @@ import { order } from '../order';
 })
 export class UpdateItemComponent implements OnInit {
   @Input() orderId: string;
+  @Output() itemAdded: EventEmitter<any> = new EventEmitter();
   updateItemForm: FormGroup;
   orders: order[];
   order: order[];
@@ -29,15 +30,17 @@ export class UpdateItemComponent implements OnInit {
   }
 
   updateItem() {
-    console.log(this.updateItemForm.value);
     var orderItem = this.updateItemForm.value;
     orderItem.orderId = this.orderId;
     // this.service.getOrderId(orderItem.orderId);
-    // this.service.addOrderItem(orderItem).subscribe(
-    //   (orderItem) =>  {
-    //     this.orderItem = orderItem;
-    //   }
-    // );
+    this.service.addOrderItem(orderItem).subscribe(
+      (result) =>  {
+        if(result) {
+          this.itemAdded.emit();
+          this.updateItemForm.reset();
+        }        
+      }
+    );
  }
   
   isFieldValid(field: string) {

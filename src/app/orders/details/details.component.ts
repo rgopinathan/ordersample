@@ -19,6 +19,7 @@ export class DetailsComponent implements OnInit {
   orderId: string;
   selectedOrder: order;
   editEnabled: boolean = false;
+  orderSummary: { totalBuyPrice: number, totalSellPrice: number, totalMargin: number } = { totalBuyPrice : 0, totalMargin: 0, totalSellPrice : 0 };
   
   constructor(private service: OrderService,
               private router: Router,
@@ -39,6 +40,7 @@ export class DetailsComponent implements OnInit {
 
     if(this.orderId != null) {
       this.getOrder();
+      this.getOrderItems();
     } else {
       this.editEnabled = true;
     }
@@ -58,6 +60,21 @@ export class DetailsComponent implements OnInit {
         DeliveryDate: this.fromJsonDate(order.DeliveryDate)
       });
     });
+  }
+
+  getOrderItems() {
+    if(this.orderId){
+      this.service.getOrderItems(this.orderId).subscribe(
+        (orderItems) => {
+          this.orderItems = orderItems;
+          orderItems.forEach( orderItem=> {
+            this.orderSummary.totalBuyPrice += orderItem.buyingPrice * orderItem.buyingQuantity;
+            this.orderSummary.totalSellPrice += orderItem.sellingPrice * orderItem.sellingQuantity;
+          });
+          this.orderSummary.totalMargin += this.orderSummary.totalSellPrice - this.orderSummary.totalBuyPrice;
+        }
+      )
+    }
   }
 
   saveOrder(){
