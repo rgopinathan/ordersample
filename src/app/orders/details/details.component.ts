@@ -4,6 +4,7 @@ import { order } from '../order';
 import { orderItem } from '../orderItem';
 import { Router,ActivatedRoute } from '@angular/router';
 import { OrderService} from '../order.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-details',
@@ -23,7 +24,7 @@ export class DetailsComponent implements OnInit {
   
   constructor(private service: OrderService,
               private router: Router,
-              private route: ActivatedRoute) { }
+              private route: ActivatedRoute, private toastr: ToastrService) { }
 
   ngOnInit() {
     this.DetailForm = new FormGroup({
@@ -78,14 +79,14 @@ export class DetailsComponent implements OnInit {
   }
 
   saveOrder(){
-    console.log(this.DetailForm.value);
     this.successMessage = '';
     this.service.addOrder(this.DetailForm.value).subscribe(
       (result)=>  {
         this.successMessage = 'Order added';
-        console.log(result);
-        this.orderId = result["_id"];
+        this.orderId = result;
+        this.order = this.DetailForm.value;
         this.editEnabled = false;
+        this.toastr.success("Order saved");
       }
     );
   }

@@ -79,7 +79,7 @@
               </div>
           </form>
         </div>
-        <div [hidden]="editEnabled">
+        <div [hidden]="editEnabled" *ngIf="order != null">
           <div class="col-md-6"> <label for="">RSS Number:</label> {{order.RSSNumber}}</div>
           <div class="col-md-6"> <label for="">Order #:</label> {{ order.OrderNumber}}</div>          
           <div class="col-md-3"> <label for="">Type:</label> {{ order.Type}}</div>
@@ -96,7 +96,7 @@
   </div>
 </div>
 
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="orderId">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h4 class="panel-title">
@@ -111,8 +111,7 @@
   </div> 
 </div>
 
-<div *ngIf="orderItems && orderItems.length > 0">Items</div>
-
-<div class="col-md-12">
+<div class="col-md-12" *ngIf="orderItems && orderItems.length > 0">
+  <h3>Items in Order</h3>
   <app-item-details [items]="orderItems"></app-item-details>
 </div>
